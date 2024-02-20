@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+var sinhvien = {
+    id: 1,
+    fullname: "Phan Gia Thuyên",
+    email: "thuyendi2004@gmail.com",
+    avatar: "avatar.jpg",
+    address: "quận 12 mỹ tâm",
+    study_major: "Computer Science",
+    avgScore: 8.5,
+  
+    getAvgScore: function () {
+      return this.avgScore;
+    },
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    setAvgScore: function (point) {
+      this.avgScore = point;
+    },
+  
+    changeAddress: function (newAddress) {
+      this.address = newAddress;
+    }
+  };
+  
+  console.log("Điểm trung bình ban đầu:", sinhvien.getAvgScore());
+  sinhvien.setAvgScore(9.0);
+  console.log("Điểm trung bình sau khi cập nhật:", sinhvien.getAvgScore());
+  
+  console.log("Địa chỉ ban đầu:", sinhvien.address);
+  sinhvien.changeAddress("456 Đường DEF, Quận UVW, TP.HCM");
+  console.log("Địa chỉ sau khi thay đổi:", sinhvien.address);
+  
+    </script>
+</body>
+</html>

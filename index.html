@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="sinhVienInfo"></div>
+
+  <script>
+    class SinhVien {
+      constructor(ten, lop, mssv, diem, ngayNhapHoc, giaiThuong) {
+        this.ten = ten;
+        this.lop = lop;
+        this.mssv = mssv;
+        this.diem = diem;
+        this.ngayNhapHoc = ngayNhapHoc;
+        this.giaiThuong = giaiThuong;
+      }
+
+      diemTrungBinh() {
+        const sum = this.diem.reduce((total, current) => total + current, 0);
+        return sum / this.diem.length;
+      }
+
+      xepLoai() {
+        const diemTB = this.diemTrungBinh();
+        if (diemTB >= 9) {
+          return "Xuất sắc";
+        } else if (diemTB >= 8) {
+          return "Giỏi";
+        } else if (diemTB >= 7) {
+          return "Khá";
+        } else if (diemTB >= 5) {
+          return "Trung bình";
+        } else {
+          return "Yếu";
+        }
+      }
+
+      thoiGianConLai() {
+        const thoiGianDaHoc = 6;
+        return 28 - thoiGianDaHoc;
+      }
+
+      khenThuong() {
+        if (this.xepLoai() === "Giỏi" && this.giaiThuong.length >= 3) {
+          return "Sinh viên được khen thưởng vì đạt loại Giỏi và có 3 giải thưởng trở lên.";
+        } else {
+          return "Sinh viên không đủ điều kiện để nhận khen thưởng.";
+        }
+      }
+
+      inThongTin() {
+        const sinhVienInfoElement = document.getElementById("sinhVienInfo");
+        sinhVienInfoElement.innerHTML = `
+          Thông tin sinh viên:
+          Tên: ${this.ten}
+          Lớp: ${this.lop}
+          Mã số sinh viên: ${this.mssv}
+          Điểm: ${this.diem.join(", ")}
+          Ngày nhập học: ${this.ngayNhapHoc}
+          Giải thưởng: ${this.giaiThuong.join(", ")}
+          Điểm trung bình: ${this.diemTrungBinh()}
+          Xếp loại: ${this.xepLoai()}
+          Thời gian học còn lại: ${this.thoiGianConLai()} tháng
+          ${this.khenThuong()}
+        `;
+      }
+    }
+
+    const sinhVien1 = new SinhVien(
+      "Phan Gia Thuyên",
+      "K62CB",
+      "SV001",
+      [8, 9, 7, 8.5],
+      "01/01/2022",
+      ["Học sinh giỏi", "Giải thưởng khác"]
+    );
+
+    sinhVien1.inThongTin();
+  </script>
+</body>
+</html>

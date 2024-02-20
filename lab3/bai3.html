@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Đối tượng Student
+function Student(name, age, address, phone, birthday) {
+    this.Name = name;
+    this.Age = age;
+    this.Address = address;
+    this.Phone = phone;
+    this.Birthday = birthday;
+    this.Subjects = [];
+  }
+  
+  // Phương thức để thêm môn học
+  Student.prototype.addSubject = function (subjectName, teacher, point, year) {
+    var subject = {
+      Name: subjectName,
+      Teacher: teacher,
+      Point: point,
+      Year: year
+    };
+    this.Subjects.push(subject);
+  };
+  
+  // Phương thức để hiển thị điểm trung bình
+  Student.prototype.getAvgScore = function () {
+    if (this.Subjects.length === 0) return 0;
+  
+    var totalPoints = this.Subjects.reduce(function (sum, subject) {
+      return sum + subject.Point;
+    }, 0);
+  
+    return totalPoints / this.Subjects.length;
+  };
+  
+  function StudentPoly(name, age, address, phone, birthday) {
+    // Gọi hàm khởi tạo của Student để khởi tạo các thuộc tính chung
+    Student.call(this, name, age, address, phone, birthday);
+  }
+  
+  StudentPoly.prototype = Object.create(Student.prototype);
+  StudentPoly.prototype.constructor = StudentPoly;
+  
+  var studentPoly = new StudentPoly("Nguyen Phan Gia Thuyen", 22, "Ho Chi Minh", "0879869758", "01/01/2004");
+  
+  studentPoly.addSubject("JavaScript", "test", 8.5, 2022);
+  studentPoly.addSubject("Python", "vip", 9.0, 2022);
+  
+  console.log("Name: " + studentPoly.Name);
+  console.log("Age: " + studentPoly.Age);
+  console.log("Address: " + studentPoly.Address);
+  console.log("Phone: " + studentPoly.Phone);
+  console.log("Birthday: " + studentPoly.Birthday);
+  console.log("Subjects: ", studentPoly.Subjects);
+  console.log("Average Score: " + studentPoly.getAvgScore());
+  
+    </script>
+</body>
+</html>

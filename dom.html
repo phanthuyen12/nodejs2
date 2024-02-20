@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced DOM and Events Example</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username">
+        <span id="usernameError" class="error"></span>
+
+        <br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+        <span id="passwordError" class="error"></span>
+
+        <br>
+
+        <button type="button" id="submitButton">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('submitButton').addEventListener('click', function() {
+            validateForm();
+        });
+
+        function validateForm() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            var usernameError = document.getElementById('usernameError');
+            var passwordError = document.getElementById('passwordError');
+
+            // Kiểm tra nếu username trống
+            if (username === '') {
+                usernameError.innerHTML = 'Username is required';
+            } else {
+                usernameError.innerHTML = '';
+            }
+
+            // Kiểm tra nếu password trống và ít nhất 8 ký tự
+            if (password === '') {
+                passwordError.innerHTML = 'Password is required';
+            } else if (password.length < 8) {
+                passwordError.innerHTML = 'Password must be at least 8 characters';
+            } else {
+                passwordError.innerHTML = '';
+            }
+        }
+    </script>
+
+</body>
+</html>

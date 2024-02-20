@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Information</title>
+</head>
+<body>
+  <div>
+    <label>Subject Name</label>
+    <input type="text" id="subjectName" name="String" value="">
+  </div>
+  <div>
+    <label>Point</label>
+    <input type="number" id="point" name="Number">
+  </div>
+  <input type="button" value="Add" onclick="addSubject()">
+  <p id="student_name"></p>
+  <p id="student_age"></p>
+  <p id="student_address"></p>
+  <p>Subjects:</p>
+  <ul id="subjects"></ul>
+
+  <script type="text/javascript">
+    var student = {
+      name: 'Phan Gia Thuyên',
+      age: 20,
+      address: 'Ho chi Minh',
+      subjects: [
+        {
+          name: 'Javascript',
+          point: 8
+        }
+      ]
+    };
+
+    document.getElementById('student_name').innerText = 'Name: ' + student.name;
+    document.getElementById('student_age').innerText = 'Age: ' + student.age;
+    document.getElementById('student_address').innerText = 'Address: ' + student.address;
+
+    // Hiển thị thông tin môn học
+    var subjectsList = document.getElementById('subjects');
+    student.subjects.forEach(function(subject) {
+      var subjectItem = document.createElement('li');
+      subjectItem.innerText = 'Subject: ' + subject.name + ', Point: ' + subject.point;
+      subjectsList.appendChild(subjectItem);
+    });
+
+    // Thêm môn học mới
+    function addSubject() {
+      var subjectName = document.getElementById('subjectName').value;
+      var point = document.getElementById('point').value;
+
+      if (subjectName && point) {
+        var newSubject = {
+          name: subjectName,
+          point: parseFloat(point)
+        };
+
+        student.subjects.push(newSubject);
+
+       
+        subjectsList.innerHTML = ''; 
+        student.subjects.forEach(function(subject) {
+          var subjectItem = document.createElement('li');
+          subjectItem.innerText = 'Subject: ' + subject.name + ', Point: ' + subject.point;
+          subjectsList.appendChild(subjectItem);
+        });
+
+        // Xóa giá trị từ các ô nhập
+        document.getElementById('subjectName').value = '';
+        document.getElementById('point').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

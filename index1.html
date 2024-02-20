@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // Tạo đối tượng sinhvien bằng phương pháp Object Literals
+const sinhvien = {
+  // Thuộc tính
+  id: 1,
+  fullname: "Nguyen Van A",
+  email: "nguyenvana@example.com",
+  avatar: "avatar.jpg",
+  address: "123 Main Street, City",
+  study_major: "Computer Science",
+  avgScore: 8.5,
+
+  // Phương thức tính điểm trung bình
+  getAvgScore: function() {
+    return this.avgScore;
+  },
+
+  // Phương thức cập nhật điểm trung bình
+  setAvgScore: function(point) {
+    this.avgScore = point;
+  },
+
+  // Phương thức thay đổi địa chỉ
+  changeAddress: function(newAddress) {
+    this.address = newAddress;
+  }
+};
+
+// Sử dụng các phương thức và in ra thông tin đối tượng
+console.log("Initial Average Score:", sinhvien.getAvgScore());
+sinhvien.setAvgScore(9.0);
+console.log("Updated Average Score:", sinhvien.getAvgScore());
+
+console.log("Initial Address:", sinhvien.address);
+sinhvien.changeAddress("456 New Street, City");
+console.log("Updated Address:", sinhvien.address);
+
+  </script>
+</body>
+</html>
